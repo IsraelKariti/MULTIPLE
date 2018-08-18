@@ -33,7 +33,7 @@ public class CustomView extends android.support.v7.widget.AppCompatTextView {
         super.onDraw(canvas);
 
         setBackgroundColor(Color.argb(255, 179, green, 252));
-        if(counter < 7){
+        if(counter < 15){
             if(green == 229){
                 counter++;
                 down = false;

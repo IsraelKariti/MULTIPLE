@@ -6,7 +6,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -284,6 +287,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void takeNote(View view){
+        // vibate phone
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        // Vibrate for 500 milliseconds
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            v.vibrate(VibrationEffect.createOneShot(500,VibrationEffect.DEFAULT_AMPLITUDE));
+        }else{
+            //deprecated in API 26
+            v.vibrate(500);
+        }
+        Toast.makeText(context, "Note taken!", Toast.LENGTH_SHORT).show();
         //what was it??? retrieve state id by utilizing button text
         Button btn_note = (Button)view;
         Button btn_state = (Button) ((ConstraintLayout)btn_note.getParent()).findViewById(R.id.state);

@@ -154,7 +154,7 @@ public class LogActivity extends AppCompatActivity {
             temp_tableRow.setDividerDrawable(res.getDrawable(R.drawable.vertical_divider, null));
             temp_tableRow.setShowDividers(LinearLayout.SHOW_DIVIDER_MIDDLE);
             for(int i=0; i<tableRow.getChildCount(); i++){
-                Button button = new Button(this);
+                CustomButton button = new CustomButton(this);
                 button.setBackgroundColor(0x00000000);
                 temp_tableRow.addView(button);
             }
@@ -178,14 +178,20 @@ public class LogActivity extends AppCompatActivity {
             cursor.moveToPrevious();
 
             // set specific day to first cell in row to indicate the day
-            ((Button)temp_tableRow.getChildAt(0)).setText(String.valueOf(date_format));
+            ((CustomButton)temp_tableRow.getChildAt(0)).setText(String.valueOf(date_format));
 
             //iterate rows of database and populate cells
             while(cursor.moveToNext() && cursor.getInt(1)==totalDay){ //change 3 to 1
                 int phraseIdInDatabase = cursor.getInt(2);
                 for(int i = 0 ; i<tableRow.getChildCount(); i++){
                     if( ((CustomButton)tableRow.getChildAt(i)).databaseID == phraseIdInDatabase){
-                        ((Button)temp_tableRow.getChildAt(i)).setBackgroundResource(R.drawable.happened_today);
+                        CustomButton button = (CustomButton)temp_tableRow.getChildAt(i);
+                        button.setBackgroundResource(R.drawable.happened_today);
+                        button.countAppearancesPerDay++;
+                        if(button.countAppearancesPerDay>1){
+                            button.setText(String.valueOf(button.countAppearancesPerDay));
+                            button.setTextColor(Color.WHITE);
+                        }
                         empty = false;
                     }
                 }

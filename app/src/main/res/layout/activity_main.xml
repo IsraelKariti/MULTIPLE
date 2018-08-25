@@ -14,8 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#01579B"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarPopupTheme" />
+        android:minHeight="?android:attr/actionBarSize"
+        android:theme="?android:attr/actionBarPopupTheme" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,7 +40,7 @@
             android:layout_marginRight="16dp"
             android:layout_marginTop="16dp"
             android:background="#ffaabbcc"
-            android:hint="כאן המקום ליחתוב מה אתה מרגיש"
+            android:hint="כתוב הרגל שאתה רוצה להפטר ממנו"
             android:selectAllOnFocus="false" />
 
     </LinearLayout>

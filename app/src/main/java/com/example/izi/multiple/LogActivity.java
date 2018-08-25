@@ -191,8 +191,14 @@ public class LogActivity extends AppCompatActivity {
                         button.setBackgroundResource(R.drawable.happened_today);
                         button.countAppearancesPerDay++;
                         if(button.countAppearancesPerDay>1){
-                            button.setText(String.valueOf(button.countAppearancesPerDay));
                             button.setTextColor(Color.WHITE);
+                            if(button.countAppearancesPerDay<100){
+                                button.setText(String.valueOf(button.countAppearancesPerDay));
+                            }
+                            else{
+                                button.setText("99");
+                            }
+
                         }
                         empty = false;
                     }

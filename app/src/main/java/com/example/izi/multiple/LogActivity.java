@@ -48,6 +48,8 @@ public class LogActivity extends AppCompatActivity {
         horizontalScrollView = nestedScrollView.findViewById(R.id.horizontal_scroll_view);
         tableLayout = horizontalScrollView.findViewById(R.id.table_layout);
         tableRow = tableLayout.findViewById(R.id.table_row);
+        tableRow.setDividerDrawable(getResources().getDrawable(R.drawable.vertical_divider, null));
+        tableRow.setShowDividers(LinearLayout.SHOW_DIVIDER_MIDDLE);
 
         sql = new SQL(this, null, null, 1);
         db = sql.getReadableDatabase();
